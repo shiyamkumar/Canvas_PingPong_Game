@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ping Pong 1.0</title>
+    <style>
+       #my-canvas{
+            border:1px solid #000;
+            background-color:#000;
+            margin:20px;
+        }
+        .startGame{
+            display: inline;
+            margin: 10px 0;
+            background-color: #000;
+            padding: 10px 20px;
+            color: #9EEA7F;
+            cursor: pointer;
+        }
+        .leftSide, .rightSide{
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="leftSide">
+            <canvas id="my-canvas" width="600" height="600"></canvas></div>
+        <div class="rightSide">
+            <h2>Ping Pong</h2>
+            <h3 class="startGame">Click To Start</h3>
+            <h3>Intro</h3>
+            <p>Move your mouse to move the BOARD.</p>
+            <p>Take half width of the board as CENTER.</p>
+            <p>If ball touches LEFT of CENTER, Ball converge to left angle. </p>
+            <p>If ball touches RIGHT of CENTER, Ball converge to right angle. </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/libs/jQuery.js"></script>
+    <script type="text/javascript" src="js/canvas.js"></script>
+</body>
+</html>
