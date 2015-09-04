@@ -4,13 +4,12 @@ $(function(){
     var canvasWidth = canvas.width;
     var canvasHeight = canvas.height;
     var boardX = 0;
-    var boardColor = "#ffffff";
+    var mainColor = "#ffffff";
     var boardWidth = 100;
     var boardHeight = 10;
     var ballX = canvasWidth/2;
     var ballY = 20;
     var ballRadius = 7;
-    var ballColor = "#ffffff";
     var ballXDirection = 1;
     var ballYDirection = 0;
     var moveBallTimer;
@@ -21,6 +20,46 @@ $(function(){
 
     createBoard();
     createBall();
+    $("#themes").on('change',function(){
+        // color combination @ http://www.colourlovers.com/blog/2009/03/14/90-two-color-palettes
+        var themes = $(this).val();
+        var canvasColor = '#fff';
+        switch(themes){
+            case "night":
+                mainColor = "#fff";
+                canvasColor = '#000';
+                break;
+            case "day":
+                mainColor = "#000";
+                canvasColor = '#fff';
+                break;
+            case "dano":
+                mainColor = "#D03958";
+                canvasColor = '#E3D5B8';
+                break;
+            case "tricks":
+                mainColor = "#651B5F";
+                canvasColor = '#AFE054';
+                break;
+            case "lady":
+                mainColor = "#E0C4D8";
+                canvasColor = '#086E8D';
+                break;
+            case "sweet":
+                mainColor = "#D63652";
+                canvasColor = '#493036';
+                break;
+            default :
+                mainColor = "#fff";
+                canvasColor = '#000';
+        }
+
+        $("#my-canvas").css({
+            'background-color':canvasColor
+        });
+        createBoard();
+        createBall();
+    });
     $("#my-canvas").bind({
         mousemove: function(e) {
             ctx.clearRect(0, 0,canvasWidth,canvasHeight);
@@ -58,14 +97,14 @@ $(function(){
     }
     function createBoard(){
         //top Board
-        ctx.fillStyle = boardColor;
+        ctx.fillStyle = mainColor;
         ctx.fillRect(boardX,0,boardWidth,boardHeight);
         //bottom Board
-        ctx.fillStyle = boardColor;
+        ctx.fillStyle = mainColor;
         ctx.fillRect(boardX,canvasHeight-boardHeight,boardWidth,boardHeight);
     }
     function createBall(){
-        ctx.fillStyle = ballColor;
+        ctx.fillStyle = mainColor;
         ctx.beginPath();
         ctx.arc(ballX, ballY, ballRadius, 0, 2 * Math.PI, false);
         ctx.strokeStyle = '#ffffff';
